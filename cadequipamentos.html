@@ -6,21 +6,22 @@
     <title>Cadastro de Equipamentos</title>
     <link rel="stylesheet" href="css.equipamentos/style2.css">
     <link rel="shortcut icon" href="img/LOGOAGRO.png" type="image/x-icon">
+
 </head>
 <body>
     <body>
         <main><div class="box">
-            <form action="">
+            <form action="" id="formulario3">
                 <fieldset>
                     <legend><b>Cadastro de Equipamentos</b></legend>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="nome" id="cadastrador" class="inputUser" required>
+                        <input type="text" name="nome" id="cadastrador2" class="inputUser" required>
                         <label for="nome" class="labelInput">Usuário</label>
                     </div>
                     <br><br>
                     <div class="inputBox">
-                        <input type="text" name="email" id="n_cliente" class="inputUser" required>
+                        <input type="text" name="email" id="n_cliente2" class="inputUser" required>
                         <label for="email" class="labelInput">Nome do Cliente</label>
                     </div>
                     <br><br>
@@ -40,7 +41,7 @@
                     </div>
                     <br><br>
                     <div class="inputBox">
-                        <input type="text" name="endereco" id="endereco" class="inputUser" required>
+                        <input type="text" name="endereco" id="caract" class="inputUser" required>
                         <label for="endereco" class="labelInput">Caracteristicas</label>
                     </div>
                     <br><br>
@@ -63,5 +64,9 @@
             </form>
         </div>
         </main>
+        <!-- Adicione essas linhas antes do fechamento da tag </body> -->
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
 </body>
 </html>

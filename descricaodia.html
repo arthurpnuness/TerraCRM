@@ -6,16 +6,17 @@
     <title>Descrição do Dia</title>
     <link rel="stylesheet" href="css.descricaodia/style1.css">
     <link rel="shortcut icon" href="img/LOGOAGRO.png" type="image/x-icon">
+
 </head>
 <body>
     <body>
         <main><div class="box">
-            <form action="">
+            <form action="" id="formulario2">
                 <fieldset>
                     <legend><b>Descrição do Dia</b></legend>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="nome" id="cadastrador" class="inputUser" required>
+                        <input type="text" name="nome" id="cadastrador1" class="inputUser" required>
                         <label for="nome" class="labelInput">Usuário</label>
                     </div>
                     <br><br>
@@ -35,7 +36,7 @@
                     </div>
                     <br><br>
                     <div class="inputBox">
-                    <input type="inputBox" name="Negócio" id="Negócio" class="inputUser" required>
+                    <input type="inputBox" name="Negócio" id="negocio" class="inputUser" required>
                     <label for="Negócio" class="labelInput">Tipo de Negócio</label>
                     </div>
                     <br><br>
@@ -48,5 +49,9 @@
             </form>
         </div>
         </main>
+        <!-- Adicione essas linhas antes do fechamento da tag </body> -->
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
 </body>
 </html>

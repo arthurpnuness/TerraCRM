@@ -1,5 +1,5 @@
 console.log('Iniciando Firebase...');
-
+import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyADVbHLFCeBiisgQap6GE53Q_8LmKMq91c",
   authDomain: "terra-crm93.firebaseapp.com",

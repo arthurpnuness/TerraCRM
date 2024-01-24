@@ -84,7 +84,7 @@ legend {
     font-size: 15px;
 }
 
-#submit {
+#submit1 {
     background-image: linear-gradient(to right, rgb(197, 0, 0), rgb(238, 60, 60));
     width: 100%;
     border: none;
@@ -95,7 +95,7 @@ legend {
     border-radius: 10px;
 }
 
-#submit:hover {
+#submit1:hover {
     background-image: linear-gradient(to right, rgb(172, 0, 0), rgb(195, 19, 19));
 }
 

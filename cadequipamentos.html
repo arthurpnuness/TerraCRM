@@ -6,7 +6,26 @@
     <title>Cadastro de Equipamentos</title>
     <link rel="stylesheet" href="css.equipamentos/style2.css">
     <link rel="shortcut icon" href="img/LOGOAGRO.png" type="image/x-icon">
-
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyADVbHLFCeBiisgQap6GE53Q_8LmKMq91c",
+          authDomain: "terra-crm93.firebaseapp.com",
+          databaseURL: "https://terra-crm93-default-rtdb.firebaseio.com",
+          projectId: "terra-crm93",
+          storageBucket: "terra-crm93.appspot.com",
+          messagingSenderId: "550321428380",
+          appId: "1:550321428380:web:12ed780ce3c3ca145c1a59"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
 </head>
 <body>
     <body>
@@ -58,7 +77,7 @@
                     <label for="data_inc"><b>Data da Inclusão: </b></label>
                     <input type="date" name="data_inc" id="data_inc" required>
                     <br><br>
-                    <input type="submit" name="submit" id="submit">
+                    <button type="button" id="submit3" >Enviar</button>
                     <a href="index.html" type="submit" name="submit" id="voltar"class="centered-button" >Voltar para a Página Inicial</a>
                 </fieldset>
             </form>
@@ -67,6 +86,6 @@
         <!-- Adicione essas linhas antes do fechamento da tag </body> -->
         <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-
+  <script src="js/logicafire.js"></script>
 </body>
 </html>

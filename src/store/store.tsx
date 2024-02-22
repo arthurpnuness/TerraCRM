@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { PersistConfig, persistReducer } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
 import storage from 'redux-persist/lib/storage';
 import { thunk } from 'redux-thunk';
@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import rootReducer from './combine-reducers';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const persistConfig: PersistConfig<any> = {
+const persistConfig = {
     key: 'root',
     storage,
 };

@@ -3,11 +3,11 @@ import { RootState } from '../../../../store';
 import { User } from '../../../../shared/contratcs/user.interface';
 import { loginFirebase } from '../thunk';
 
-interface IAuth {
+export interface IAuth {
     user: null | User;
     islogged: boolean;
 }
-const initialState: IAuth = {
+export const initialState: IAuth = {
     user: null,
     islogged: false,
 };

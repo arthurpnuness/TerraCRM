@@ -13,7 +13,7 @@ export type PagesKey = 'login';
 export default {
     login: { path: '/', accesslevel: [], element: <Login /> },
     home: { path: '/home', accesslevel: [1, 2, 3], element: <Home /> },
-    employees: { path: '/employees', accesslevel: [2, 3], element: <Employees /> },
+    employees: { path: '/employees', accesslevel: [3], element: <Employees /> },
     clients: { path: '/clients', accesslevel: [2, 3], element: <Clients /> },
     calendar: { path: '/calendar', accesslevel: [2, 3], element: <Calendar /> },
     products: { path: '/product', accesslevel: [2, 3], element: <Products /> },

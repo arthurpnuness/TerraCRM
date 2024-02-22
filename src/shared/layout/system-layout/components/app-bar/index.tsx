@@ -54,8 +54,9 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function HeaderAppBar(props: Props) {
     const dispatch = useAppDispatch();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [auth, setAuth] = useState(true);
+
+    const auth = true;
+    // const [auth, setAuth] = useState(true);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const handleLogout = () => {

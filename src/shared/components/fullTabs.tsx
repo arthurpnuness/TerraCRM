@@ -5,7 +5,6 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -15,7 +14,6 @@ interface TabPanelProps {
 }
 
 interface ITabsProps {
-    titlePage: string;
     tabs: string[];
     tabsPanel: JSX.Element[];
 }
@@ -31,19 +29,21 @@ function TabPanel(props: TabPanelProps) {
             aria-labelledby={`full-width-tab-${index}`}
             {...other}
         >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+            {value === index && (
+                <Box sx={{ px: 3, overflow: 'auto', maxHeight: '70vh' }}>{children}</Box>
+            )}
         </div>
     );
 }
 
-function a11yProps(index: number) {
+function a11yProps(index: number, text: string) {
     return {
-        id: `full-width-tab-${index}`,
-        'aria-controls': `full-width-tabpanel-${index}`,
+        id: `full-width-tab-${text}-${index}`,
+        'aria-controls': `full-width-tabpanel-${text}-${index}`,
     };
 }
 
-export default function FullWidthTabs({ titlePage, tabs, tabsPanel }: ITabsProps) {
+export default function FullWidthTabs({ tabs, tabsPanel }: ITabsProps) {
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
 
@@ -53,17 +53,13 @@ export default function FullWidthTabs({ titlePage, tabs, tabsPanel }: ITabsProps
     };
 
     const handleChangeIndex = (index: number) => {
+        console.log(index);
         setValue(index);
     };
 
     return (
         <Box sx={{ bgcolor: 'background.paper', width: '100%', padding: 0 }}>
             <AppBar position='sticky' sx={{ width: '100%', margin: 0, backgroundColor: 'inherit' }}>
-                <Box display='flex' width='100%' justifyContent='center' alignItems='center'>
-                    <Typography variant='h4' color={'black'}>
-                        {titlePage}
-                    </Typography>
-                </Box>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -83,7 +79,7 @@ export default function FullWidthTabs({ titlePage, tabs, tabsPanel }: ITabsProps
                         <Tab
                             key={i}
                             label={t}
-                            {...a11yProps(i)}
+                            {...a11yProps(i, t)}
                             sx={{
                                 color: 'gray',
                                 '&.Mui-selected': {

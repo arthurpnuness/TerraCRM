@@ -1,0 +1,20 @@
+export type Client = {
+    cod: string | number | null;
+    tipoPessoa: string;
+    nome: string;
+    nome2: string | null;
+    tipoDoc: string;
+    doc: string;
+    dataDoc: string;
+    situacao: string | null;
+    telefone: string;
+    email: string;
+    cep: string;
+    logradouro: string;
+    logradouroNumero: string | number;
+    logradouroComplemento: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    pais: string;
+};

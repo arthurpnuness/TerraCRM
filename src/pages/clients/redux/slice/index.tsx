@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../../../store';
 import { Client } from '../../../../shared/contratcs/client.interface';
+import { getAllclients } from '../thunk';
 
 export interface IClientState {
     clients: Client[];
@@ -34,7 +35,11 @@ const clientSlice = createSlice({
         },
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    extraReducers(_builder) {},
+    extraReducers(builder) {
+        builder.addCase(getAllclients.fulfilled, (state, action) => {
+            state.clients = action.payload;
+        });
+    },
 });
 
 export const { clearState, setEdit, setListClient, setModalInfo, setCodClient } =

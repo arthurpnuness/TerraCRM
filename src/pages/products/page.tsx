@@ -1,3 +1,5 @@
+import EmConstrucao from '../../shared/components/pageContruct';
+
 export default function Products() {
-    return <p>produtos</p>;
+    return <EmConstrucao page='produtos' />;
 }

@@ -1,3 +1,5 @@
+import EmConstrucao from '../../shared/components/pageContruct';
+
 export default function Budgets() {
-    return <p>orcamentos</p>;
+    return <EmConstrucao page='orcamentos' />;
 }

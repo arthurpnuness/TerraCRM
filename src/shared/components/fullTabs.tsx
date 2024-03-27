@@ -48,12 +48,10 @@ export default function FullWidthTabs({ tabs, tabsPanel }: ITabsProps) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        console.log(event);
         setValue(newValue);
     };
 
     const handleChangeIndex = (index: number) => {
-        console.log(index);
         setValue(index);
     };
 
@@ -91,6 +89,7 @@ export default function FullWidthTabs({ tabs, tabsPanel }: ITabsProps) {
                     ))}
                 </Tabs>
             </AppBar>
+
             <SwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                 index={value}

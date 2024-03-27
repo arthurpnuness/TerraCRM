@@ -1,3 +1,5 @@
+import EmConstrucao from '../../shared/components/pageContruct';
+
 export default function Calendar() {
-    return <p>calendario</p>;
+    return <EmConstrucao page='calendario' />;
 }

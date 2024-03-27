@@ -15,9 +15,12 @@ import validateCNPJ from '../../../../shared/utils/functions/validateCnpj';
 import { mascaraOuRemove } from '../../../../shared/utils/functions/formatDoc';
 import { useSelector } from 'react-redux';
 import { clientSelectAll } from '../../redux/slice';
-// import { useAppDispatch } from '../../../../store';
+import { Client } from '../../../../shared/contratcs/client.interface';
+import { createdClient } from '../../redux/thunk';
+import { useAppDispatch } from '../../../../store';
+
 export default function RegisterClient() {
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
     const { clientEdit } = useSelector(clientSelectAll);
     const [codigo, setCodigo] = useState<string | number | null>(null);
     const [tipoPessoa, setTipoPessoa] = useState<'F' | 'J' | 'N'>('N');
@@ -107,9 +110,71 @@ export default function RegisterClient() {
         }
     };
 
+    const handleClient = () => {
+        const data: Client = {
+            cod: codigo,
+            tipoPessoa,
+            nome,
+            nome2,
+            tipoDoc,
+            doc: mascaraOuRemove(doc, tipoDoc, false),
+            dataDoc,
+            situacao,
+            telefone,
+            email,
+            cep,
+            logradouro,
+            logradouroNumero,
+            logradouroComplemento,
+            bairro,
+            cidade,
+            estado,
+            pais,
+        };
+        if (
+            (nome || nome2) &&
+            tipoDoc &&
+            doc &&
+            dataDoc &&
+            telefone &&
+            email &&
+            cep &&
+            logradouro &&
+            logradouroNumero &&
+            logradouroComplemento &&
+            bairro &&
+            cidade &&
+            estado &&
+            pais
+        ) {
+            dispatch(createdClient(data));
+        } else {
+            alert('dados incompletos!');
+        }
+    };
+    const handleClean = () => {
+        setCodigo(null);
+        setNome('');
+        setNome2('');
+        setTipoDoc('');
+        setDoc('');
+        setDataDoc('');
+        setSituacao('');
+        setTelefone('');
+        setEmail('');
+        setCep('');
+        setLogradouro('');
+        setLogradouroNumero('');
+        setLogradouroComplemento('');
+        setBairro('');
+        setCidade('');
+        setEstado('');
+        setPais('');
+    };
+
     return (
         <Box width={'100%'} sx={{ display: 'flex', flexWrap: 'wrap' }}>
-            {tipoPessoa === 'N' ? (
+            {!clientEdit && tipoPessoa === 'N' && (
                 <Box
                     width={'100%'}
                     sx={{
@@ -142,21 +207,47 @@ export default function RegisterClient() {
                         Pessoa Jurídica
                     </Button>
                 </Box>
-            ) : (
+            )}
+            {tipoPessoa !== 'N' && (
                 <Box width={'100%'}>
-                    <TextField
-                        label='Código'
-                        id='outlined-start-adornment'
-                        sx={{ m: '0.4rem 0.4rem 0.1rem 0.4rem ', width: '10rem' }}
-                        disabled
-                        size='small'
-                        variant='outlined'
-                        value={codigo}
-                    />
+                    <Box
+                        display={'flex'}
+                        justifyContent={'space-between'}
+                        sx={{ m: '0.7rem 0.4rem 0.1rem 0.4rem ' }}
+                    >
+                        <TextField
+                            label='Código'
+                            id='outlined-start-adornment'
+                            sx={{ width: '10rem' }}
+                            disabled
+                            size='small'
+                            variant='outlined'
+                            value={codigo}
+                        />
 
-                    <Button>Salvar</Button>
-                    {!codigo && <Button>Limpar</Button>}
-                    <Button>Cancelar</Button>
+                        <Box>
+                            <Button sx={{ mr: 2 }} onClick={handleClient}>
+                                Salvar
+                            </Button>
+                            {!codigo && (
+                                <Button sx={{ mr: 2 }} onClick={handleClean}>
+                                    Limpar
+                                </Button>
+                            )}
+                            <Button
+                                onClick={() => {
+                                    handleClean();
+                                    (
+                                        document.getElementById(
+                                            'full-width-tab-Clientes-0'
+                                        ) as HTMLButtonElement
+                                    ).click();
+                                }}
+                            >
+                                {!codigo ? 'Voltar' : 'Cancelar'}
+                            </Button>
+                        </Box>
+                    </Box>
 
                     <fieldset
                         style={{

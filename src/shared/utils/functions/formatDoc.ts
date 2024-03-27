@@ -22,7 +22,7 @@ export const mascaraOuRemove = (
 
                 // Máscara para celular (xx) xxxxx-xxxx
                 if (text.length === 11) {
-                    text = `(${text.substring(0, 2)}) ${text.substring(2, 1)} ${text.substring(
+                    text = `(${text.substring(0, 2)}) ${text.substring(3, 2)} ${text.substring(
                         3,
                         7
                     )}-${text.substring(7, 11)}`;

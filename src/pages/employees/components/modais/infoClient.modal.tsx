@@ -61,7 +61,7 @@ export default function InfoClientModal() {
     React.useEffect(() => {
         if (codClient && showModalInfoClient) {
             console.log(codClient);
-            const client = clients.find((c) => c.cod === codClient);
+            const client = clients.find((c) => Number(c.cod) === Number(codClient));
             console.log(client);
             if (client) {
                 validateCNPJ(mascaraOuRemove(client.doc, client.tipoDoc, true))

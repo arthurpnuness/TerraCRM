@@ -5,6 +5,7 @@ import RegisterClient from './components/tabs/register.client.tab';
 export default function Clients() {
     return (
         <FullWidthTabs
+            key={1}
             tabs={['Clientes', 'Cadastro']}
             tabsPanel={[<ListClients />, <RegisterClient />]}
         />

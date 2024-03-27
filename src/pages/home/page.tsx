@@ -1,3 +1,5 @@
+import EmConstrucao from '../../shared/components/pageContruct';
+
 export default function Home() {
-    return <p>oi</p>;
+    return <EmConstrucao page='pagina inicial' />;
 }

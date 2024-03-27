@@ -17,7 +17,7 @@ export default function AppRoutes() {
                 <Route path={Pages.clients.path} element={Pages.clients.element} />
                 <Route path={Pages.budgets.path} element={Pages.budgets.element} />
                 <Route path={Pages.sales.path} element={Pages.sales.element} />
-                <Route path={Pages.employees.path} element={Pages.home.element} />
+                <Route path={Pages.employees.path} element={Pages.employees.element} />
                 <Route path={Pages.products.path} element={Pages.products.element} />
                 <Route path={Pages.home.path} element={Pages.home.element} />
             </Route>

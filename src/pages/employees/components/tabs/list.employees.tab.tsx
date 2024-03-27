@@ -11,12 +11,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from 'react';
+import postMock from '../../../../shared/utils/mocks/clientes.mock';
 import { useAppDispatch } from '../../../../store';
 import { useSelector } from 'react-redux';
-import { clientSelectAll, setCodClient, setEdit, setModalInfo } from '../../redux/slice';
+
 import { mascaraOuRemove } from '../../../../shared/utils/functions/formatDoc';
-import InfoClientModal from '../modais/infoClient.modal';
-import { getAllclients } from '../../redux/thunk';
+
+import { clientSelectAll, setCodClient, setEdit, setModalInfo } from '../../../clients/redux/slice';
 
 const StyledGridOverlay = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -98,19 +99,19 @@ function CustomToolbar() {
         </GridToolbarContainer>
     );
 }
-export default function ListClients() {
+export default function ListEmployees() {
     const dispatch = useAppDispatch();
-    const { clients, codClient } = useSelector(clientSelectAll);
+    const { clients } = useSelector(clientSelectAll);
     const [rows, setRows] = useState<
         {
-            id: string;
+            id: number;
             tipo: string;
             cliente: string;
             doc: string;
         }[]
     >([]);
     useEffect(() => {
-        dispatch(getAllclients());
+        postMock(dispatch);
         dispatch(setEdit(null));
     }, []);
 
@@ -161,7 +162,13 @@ export default function ListClients() {
                         <IconButton>
                             <EditIcon
                                 onClick={() => {
-                                    dispatch(setEdit(clients.find((r) => r.cod === params.row.id)));
+                                    dispatch(
+                                        setEdit(
+                                            clients.find(
+                                                (r) => Number(r.cod) === Number(params.row.id)
+                                            )
+                                        )
+                                    );
                                     const cadastro = document.getElementById(
                                         'full-width-tab-Cadastro-1'
                                     ) as HTMLButtonElement;
@@ -181,14 +188,14 @@ export default function ListClients() {
     useEffect(() => {
         if (clients.length) {
             const row: Array<{
-                id: string;
+                id: number;
                 tipo: string;
                 cliente: string;
                 doc: string;
             }> = [];
             clients.forEach((c) => {
                 row.push({
-                    id: c.cod as string,
+                    id: Number(c.cod),
                     tipo: c.tipoPessoa === 'J' ? 'Juridico' : 'Físico',
                     cliente: c.nome,
                     doc: `${c.tipoDoc} ${mascaraOuRemove(c.doc, c.tipoDoc, true)}`,
@@ -210,7 +217,6 @@ export default function ListClients() {
                     />
                 </div>
             </div>
-            {!!codClient && <InfoClientModal />}
         </>
     );
 }
